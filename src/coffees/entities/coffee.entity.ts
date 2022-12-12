@@ -23,8 +23,9 @@ export class Coffee {
     type => Flavor,
     flavor => flavor.coffees,
     {
-      cascade: true, // 👈 or optionally just insert or update ['insert']
+      cascade: true,
     },
   )
   flavors: Flavor[];
+  recommendations: any;
 }
