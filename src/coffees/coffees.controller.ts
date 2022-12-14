@@ -8,12 +8,15 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { ApiForbiddenResponse, ApiTags } from '@nestjs/swagger';
 import { CoffeesService } from './coffees.service';
 
+@ApiTags('coffees')
 @Controller('coffees')
 export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
   @Get()
   async findAll(@Query() paginationQuery) {
     await new Promise(resolve => setTimeout(resolve, 5000));
